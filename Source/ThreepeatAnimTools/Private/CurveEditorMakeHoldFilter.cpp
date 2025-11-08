@@ -1,6 +1,7 @@
 // Copyright Threepeat LLC, 2024. All Rights Reserved.
 
 #include "CurveEditorMakeHoldFilter.h"
+#include "CoreMinimal.h"
 #include "Math/UnrealMathUtility.h"
 
 void FloatSpringInterp(float& CurrentValue, float TargetValue, float& Velocity, float DeltaTime, float Stiffness, float Damping)
@@ -119,7 +120,9 @@ void UCurveEditorMakeHoldFilter::ApplyFilter_Impl(TSharedRef<FCurveEditor> InCur
 
 			Curve->Modify();
 			Curve->SetKeyPositions(KeyHandlesToModify, NewKeyPositions);
+			PRAGMA_DISABLE_DEPRECATION_WARNINGS
 			Curve->RemoveKeys(KeyHandlesToDelete);
+			PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			int numFramesPastFirst = FMath::RoundToInt(((SelectedKeyPositions[lastKeyNum].InputValue - SelectedKeyPositions[0].InputValue) / 2.0)/frameInterval);
 			UE_LOG(LogTemp, Warning, TEXT("num frames past first: %d"), numFramesPastFirst);
 			Curve->AddKey(FKeyPosition(SelectedKeyPositions[0].InputValue + numFramesPastFirst * frameInterval, holdValue), InCurveEditor->GetDefaultKeyAttribute().Get());
