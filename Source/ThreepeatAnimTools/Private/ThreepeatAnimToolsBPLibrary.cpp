@@ -17,7 +17,7 @@
 //#include "MovieSceneFloatTrack.h"
 #include "MovieSceneSection.h"
 #include "Curves/RichCurve.h"
-//#include "Curves/CurveEditor.h""
+//#include "Curves/CurveEditor.h"
 #include "ISequencerModule.h"
 #include "MovieSceneToolHelpers.h"
 //#include "LevelSequenceEditorBlueprintLibrary.h"
