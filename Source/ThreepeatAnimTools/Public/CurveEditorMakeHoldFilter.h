@@ -37,7 +37,7 @@ public:
 		bOvershoot = false;
 		bOvershootSprintConstant = 100.0f;
 		bOvershootDamping = 1.0f;
-		bOvershootPrerollHistorySeconds = 0.1;
+		bOvershootPrerollHistorySeconds = 0.1f;
 	}
 
 	/** If true, use the last key as the old value (defaults to using first key value)*/
@@ -55,7 +55,7 @@ public:
 
 	/** how many selected keys before the hold should start (must be > 1 for overshoot to work)*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Settings", meta = (EditCondition = "bOvershoot"))
-	float bOvershootPrerollHistorySeconds = 0.1;
+	float bOvershootPrerollHistorySeconds = 0.1f;
 
 	virtual void ApplyFilter_Impl(TSharedRef<FCurveEditor> InCurveEditor, const TMap<FCurveModelID, FKeyHandleSet>& InKeysToOperateOn, TMap<FCurveModelID, FKeyHandleSet>& OutKeysToSelect) override;
 };
